@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+     before_action :require_user_logged_in, only: [:edit, :update]
   def index
     @users = User.order(id: :desc).page(params[:page]).per(20)
   end
@@ -28,7 +29,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-  if current_user == @user
  
    if @user.update(user_params)
     flash[:success] = 'ユーザー情報を編集しました。'
@@ -36,12 +36,11 @@ class UsersController < ApplicationController
    else
     flash.now[:danger] = 'ユーザー情報の編集に失敗しました。'
     render :edit
-   end   
- 
-  else
-    redirect_to root_url
+   end 
   end
- end
+  
+  
+ 
   
    private
 
@@ -49,4 +48,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation,:image,:profile)
   end
 end
-

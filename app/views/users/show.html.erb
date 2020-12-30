@@ -5,10 +5,13 @@
         <h3 class="card-title"><%= @user.name %></h3>
       </div>
       <div class="card-body">
-        
       </div>
     </div>
   </aside>
+  
+<%= @user.profile%>
+<p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
+
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="#" class="nav-link">投稿</a></li>
@@ -16,5 +19,5 @@
       <li class="nav-item"><a href="#" class="nav-link">Follower</a></li>
     </ul>
   </div>
-  <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
+ 
 </div>
