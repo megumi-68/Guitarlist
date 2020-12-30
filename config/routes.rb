@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'guitars/new', to: 'guitars#new'
+  post 'guitars', to: 'guitars#create'
+  resources :guitars, only: [:create, :destroy,:edit,:update]
 end

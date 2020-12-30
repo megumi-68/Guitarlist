@@ -1,4 +1,15 @@
 <% if logged_in? %>
+<div class="d-flex align-items-center">
+    <h1>投稿一覧</h1>
+    <div class="ml-auto posts_button">
+        <a class="btn btn-outline-info" href="/guitars/new" role="button">投稿</a>
+    </div>
+</div>
+ <div class="row">
+    <div class="col-sm-8">
+      <%= render 'guitars/guitars', guitars: @guitars %>
+    </div>
+  </div>
   <p>ログイン完了ユーザ: <%= current_user.name %></p>
 <% else %>
   <div class="center jumbotron">
