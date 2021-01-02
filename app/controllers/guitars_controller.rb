@@ -22,6 +22,7 @@ class GuitarsController < ApplicationController
   end
 
   def destroy
+    @guitar = Guitar.find(params[:id])
     @guitar.destroy
     flash[:success] = '削除しました。'
     redirect_back(fallback_location: root_path)
