@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'guitars/new', to: 'guitars#new'
   post 'guitars', to: 'guitars#create'
   
-  resources :guitars, only: [:show, :create, :destroy, :edit, :update]
+  resources :guitars, only: [:show, :create, :edit, :update, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
 

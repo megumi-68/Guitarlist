@@ -26,6 +26,17 @@ class GuitarsController < ApplicationController
     def show
       @guitar = Guitar.find(params[:id])
     end
+    
+    def edit
+      @guitar = Guitar.find(params[:id])
+    end
+    
+    def update
+      guitar = Guitar.find(params[:id])
+      guitar.update(guitar_params)
+
+      redirect_to guitar
+    end
 
     def destroy
       @guitar = Guitar.find(params[:id])
