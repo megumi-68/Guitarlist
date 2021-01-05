@@ -1,5 +1,6 @@
 class GuitarsController < ApplicationController
     before_action :require_user_logged_in
+    before_action :correct_user, only: [:destroy]
     
     def index
         @guitars = Guitar.all
@@ -15,7 +16,7 @@ class GuitarsController < ApplicationController
       flash[:success] = '投稿しました。'
       redirect_to root_url
     else
-      @guitars = current_user.guitars.order(id: :desc).page(params[:page])
+      @guitars = current_user.feed_guitars.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿に失敗しました。'
       render 'toppages/index'
     end
