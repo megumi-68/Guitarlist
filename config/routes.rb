@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'favorites/create'
-  get 'favorites/destroy'
+  
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
@@ -21,7 +20,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'guitars/new', to: 'guitars#new'
   post 'guitars', to: 'guitars#create'
-  resources :guitars, only: [:create, :destroy, :edit, :update]
+  
+  resources :guitars, only: [:show, :create, :destroy, :edit, :update]
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
 

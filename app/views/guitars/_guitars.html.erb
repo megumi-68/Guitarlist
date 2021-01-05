@@ -5,9 +5,10 @@
       <div class="media-body">
         <div>
           <%= link_to guitar.user.name, user_path(guitar.user) %> <span class="text-muted">posted at <%= guitar.created_at %></span>
+          
         </div>
         <div>
-            <p class="mb-0"><%= guitar.content %></p>
+            <%= link_to guitar.content, guitar, id: "detail-" + guitar.id.to_s %>
         </div>
       </div>
        <% if current_user == guitar.user %>
