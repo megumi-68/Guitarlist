@@ -10,6 +10,12 @@ class GuitarsController < ApplicationController
       @guitar = Guitar.new
     end
     
+    def show
+      @guitar = Guitar.find(params[:id])
+      @comment = Comment.new
+      
+    end
+    
    
     def create
       @guitar = current_user.guitars.build(guitar_params)
@@ -21,10 +27,6 @@ class GuitarsController < ApplicationController
       flash.now[:danger] = '投稿に失敗しました。'
       render 'toppages/index'
      end
-    end
-    
-    def show
-      @guitar = Guitar.find(params[:id])
     end
     
     def edit
@@ -48,7 +50,7 @@ class GuitarsController < ApplicationController
   private
 
     def guitar_params
-      params.require(:guitar).permit(:content,:name,:category)
+      params.require(:guitar).permit(:content,:name,:category,:comment)
     end
   
     def correct_user

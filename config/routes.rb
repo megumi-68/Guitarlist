@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
@@ -18,10 +17,11 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'guitars/new', to: 'guitars#new'
-  post 'guitars', to: 'guitars#create'
   
-  resources :guitars, only: [:show, :create, :edit, :update, :destroy]
+  
+  resources :guitars, only: [:show, :create, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :destroy]
+  end
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
 

@@ -16,3 +16,23 @@
       <p class="card-text"><%= @guitar.content %></p>
   </div>
 </div>
+
+ 
+ <div>
+    <% @guitar.comments.each do |comment| %>
+      <%= link_to comment.user.name, comment.user %>
+      <%= comment.comment %>
+      <span class="delete">
+        <%= link_to "削除", [@guitar, comment], method: :delete %>
+      </span>
+    <% end %>
+  </div>
+  <div class="comment-form">
+    <%= form_for([@guitar, @comment]) do |f| %>
+      
+      <div class="field">
+       <%= f.text_area :comment, size: "40x5" %>
+      </div>
+      <%= f.submit "投稿", class: "btn btn-primary" %>
+    <% end %>
+  </div>

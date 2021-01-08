@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :likes,through: :favorites, source: :guitar
   has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'guitar_id'
   
+  has_many :comments, dependent: :destroy
+  
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
