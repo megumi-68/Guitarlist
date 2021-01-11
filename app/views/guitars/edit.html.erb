@@ -4,6 +4,19 @@
       <a class="btn btn-outline-info" href="/">投稿一覧</a>
   </div>
 </div>
+
+<%= form_for(@guitar) do |f| %>
+   <% if @guitar.photo? %>
+      <%= image_tag @guitar.photo.thumb.url %>
+   <% else %>
+      <%= image_tag "/assets/default.jpg", :size => '100x100' %>
+   <% end %>
+      <button type="button" class="btn btn-outline-secondary rounded-pill">
+         <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %>
+      </button>
+　　<%= f.submit '更新', class: 'btn btn-primary' %>
+<% end %>
+
   <%= form_for @guitar do |f| %>
     <div class="form-group">
         <%= f.label :category, 'カテゴリー' %>

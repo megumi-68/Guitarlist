@@ -4,7 +4,7 @@
 
 <%= form_for(@user) do |f| %>
    <% if @user.image? %>
-      <%= image_tag @user.image.url %>
+      <%= image_tag @user.image.thumb.url %>
    <% else %>
       <%= image_tag "/assets/default.jpg", :size => '100x100' %>
    <% end %>

@@ -54,3 +54,5 @@ gem 'tzinfo-data'
 gem 'kaminari'
 
 gem 'carrierwave'
+
+gem 'mini_magick'

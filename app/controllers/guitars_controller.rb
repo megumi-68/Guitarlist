@@ -13,7 +13,6 @@ class GuitarsController < ApplicationController
     def show
       @guitar = Guitar.find(params[:id])
       @comment = Comment.new
-      
     end
     
    
@@ -50,7 +49,7 @@ class GuitarsController < ApplicationController
   private
 
     def guitar_params
-      params.require(:guitar).permit(:content,:name,:category,:comment)
+      params.require(:guitar).permit(:content,:name,:category,:comment,:photo)
     end
   
     def correct_user

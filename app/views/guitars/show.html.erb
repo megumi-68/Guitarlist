@@ -4,6 +4,12 @@
         <%= link_to '編集', edit_guitar_path(@guitar),class:"btn btn-outline-info" %>
     </div>
 </div>
+<div class="card">
+      
+      <div class="card-body">
+        <img class="rounded img-fluid" src="<%= @guitar.photo.thumb.url(@guitar, { size: 500 }) %>" alt="">
+      </div>
+    </div>
 
 <div class="card">
   <div class="card-header bg-info text-white">

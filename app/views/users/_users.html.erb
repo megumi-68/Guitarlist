@@ -2,6 +2,7 @@
   <ul class="list-unstyled">
     <% users.each do |user| %>
       <li class="media">
+       <img class="mr-2 rounded" src="<%= user.image.thumb50.url(user, { size: 50 }) %>" alt="">
         <div class="media-body">
           <div>
             <%= user.name %>
