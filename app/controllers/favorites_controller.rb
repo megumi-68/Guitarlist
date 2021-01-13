@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    guitar = guitar.find(params[:guitar_id])
+    guitar = Guitar.find(params[:guitar_id])
     current_user.unlike(guitar)
     flash[:success] = 'お気に入りを解除しました。'
     redirect_to  root_path

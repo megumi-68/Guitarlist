@@ -2,7 +2,7 @@
  <% guitars.each do |guitar| %>
   <div class="col-sm-4">
    <div class="card-header">
-        <%= link_to guitar.user.name, user_path(guitar.user) %> <span class="text-muted">posted at <%= guitar.created_at %></span>
+        <%= link_to guitar.user.name, user_path(guitar.user) %> <span class="text-muted"><%= guitar.created_at %></span>
    </div>
    <div class="card-body">
      <% if guitar.photo? %>
