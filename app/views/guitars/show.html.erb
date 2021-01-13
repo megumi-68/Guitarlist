@@ -6,20 +6,18 @@
        <% end %>
     </div>
 </div>
-<div class="card">
-      
-      <div class="card-body">
+
+<div class="row">
+<div class="card" style="width:20rem;">
+<div class="card-img-top" >
          <% if @guitar.photo? %>
         <img class="rounded img-fluid" src="<%= @guitar.photo.thumb.url(@guitar, { size: 500 }) %>" alt="">
          <% else %>
         <%= image_tag "/assets/default.g.jpg", :size => '100x100' %>
          <% end %>
       </div>
-    </div>
-
-<div class="card">
-  <div class="card-header bg-info text-white">
-      <h4><%= @guitar.name %></h4>
+  <div class="card-body">
+       <h4 class="card-title"><%= @guitar.name %></h4>
   </div>
   <div class="card-body">
       <p class="card-text"><%= @guitar.category %></p>
@@ -28,10 +26,21 @@
       <p class="card-text"><%= @guitar.content %></p>
   </div>
 </div>
-
  
- <div>
+ <div class="col-sm-2">
+  <div class="comment-form">
+    <%= form_for([@guitar, @comment]) do |f| %>
+      <div class="field">
+       <%= f.text_area :comment, size: "30x2" %>
+      </div>
+      <%= f.submit "コメント", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  
+    <h>コメント一覧</h>
+    <ul class="list-unstyled">
     <% @guitar.comments.each do |comment| %>
+    <li class="media">
       <%= link_to comment.user.name, comment.user %>
       <%= comment.comment %>
       <span class="delete">
@@ -40,13 +49,6 @@
         <% end %>
       </span>
     <% end %>
+    </li>
   </div>
-  <div class="comment-form">
-    <%= form_for([@guitar, @comment]) do |f| %>
-      
-      <div class="field">
-       <%= f.text_area :comment, size: "40x5" %>
-      </div>
-      <%= f.submit "投稿", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+</ul>
