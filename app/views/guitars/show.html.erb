@@ -1,13 +1,19 @@
 <div class="d-flex align-items-center mt-4 mb-4">
     <div class="ml-auto posts_button">
         <a class="btn btn-outline-info" href="/" role="button">投稿一覧</a>
+         <% if current_user == @guitar.user %>
         <%= link_to '編集', edit_guitar_path(@guitar),class:"btn btn-outline-info" %>
+       <% end %>
     </div>
 </div>
 <div class="card">
       
       <div class="card-body">
+         <% if @guitar.photo? %>
         <img class="rounded img-fluid" src="<%= @guitar.photo.thumb.url(@guitar, { size: 500 }) %>" alt="">
+         <% else %>
+        <%= image_tag "/assets/default.g.jpg", :size => '100x100' %>
+         <% end %>
       </div>
     </div>
 
@@ -29,7 +35,9 @@
       <%= link_to comment.user.name, comment.user %>
       <%= comment.comment %>
       <span class="delete">
+        <% if current_user == comment.user %>
         <%= link_to "削除", [@guitar, comment], method: :delete %>
+        <% end %>
       </span>
     <% end %>
   </div>

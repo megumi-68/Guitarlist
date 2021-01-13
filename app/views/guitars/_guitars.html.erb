@@ -1,8 +1,14 @@
 <ul class="list-unstyled">
   <% guitars.each do |guitar| %>
     <li class="media">
-   　<img class="mr-2 rounded" src="<%= guitar.photo.thumb.url(guitar, { size: 50 }) %>" alt="">
-      <div class="media-body">
+      
+       <% if guitar.photo? %>
+  <img class="mr-2 rounded" src="<%= guitar.photo.thumb.url(guitar, { size: 50 }) %>" alt="">
+  <% else %>
+   <%= image_tag "/assets/default.g.jpg", :size => '100x100' %>
+      <% end %>
+      
+    <div class="media-body">
         <div>
           <%= link_to guitar.user.name, user_path(guitar.user) %> <span class="text-muted">posted at <%= guitar.created_at %></span>
         </div>
