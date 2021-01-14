@@ -4,7 +4,7 @@
       <li class="media">
         
       <% if user.image? %>
-       <%= image_tag user.image.thumb.url %>
+       <%= image_tag user.image.thumb50.url %>
       <% else %>
       <%= image_tag "/assets/default.u.jpeg", :size => '100x100' %>
       <% end %>
