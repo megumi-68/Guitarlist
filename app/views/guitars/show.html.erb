@@ -13,11 +13,11 @@
    <%= link_to @guitar.user.name, user_path(@guitar.user) %>
 </div>
 <div class="card-body">
-         <% if @guitar.photo? %>
-        <img class="rounded img-fluid" src="<%= @guitar.photo.thumb.url(@guitar, { size: 500 }) %>" alt="">
-         <% else %>
+        <% if @guitar.photo? %>
+        <%= image_tag @guitar.photo.thumb.url %>
+        <% else %>
         <%= image_tag "/assets/default.g.jpg", :size => '100x100' %>
-         <% end %>
+        <% end %>
       </div>
   <div class="card-body">
        <h4 class="card-title"><%= @guitar.name %></h4>

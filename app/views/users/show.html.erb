@@ -6,7 +6,7 @@
       </div>
       <div class="card-body">
          <% if @user.image? %>
-          <img class="rounded img-fluid" src="<%= @user.image.thumb.url(@user, { size: 500 }) %>" alt="">
+          <%= image_tag @user.image.thumb.url %>
          <% else %>
           <%= image_tag "/assets/default.u.jpeg", :size => '100x100' %>
          <% end %>
