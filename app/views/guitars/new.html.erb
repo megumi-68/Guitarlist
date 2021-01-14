@@ -5,6 +5,7 @@
   </div>
 </div>
 <div class="row">
+    
 <%= form_for(@guitar) do |f| %>
    <% if @guitar.photo? %>
       <%= image_tag @guitar.photo.thumb.url %>
