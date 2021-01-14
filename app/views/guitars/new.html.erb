@@ -10,7 +10,7 @@
    <% if @guitar.photo? %>
       <%= image_tag @guitar.photo.thumb.url %>
    <% else %>
-      <%= image_tag "/assets/default.g.jpg", :size => '100x100' %>
+      <%= image_tag "/assets/default.g", :size => '100x100' %>
    <% end %>
       <button type="button" class="btn btn-outline-secondary rounded-pill">
          <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %>
