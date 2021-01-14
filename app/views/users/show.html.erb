@@ -10,16 +10,15 @@
          <% else %>
           <%= image_tag "/assets/default.u.jpeg", :size => '100x100' %>
          <% end %>
-      </div>
-       <%= @user.profile%>
+     
+      <%= @user.profile%>
       <% if @user.id == current_user.id %>
       <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
       <% end %>
-    
     </div>
+    </div>
+     <%= render 'relationships/follow_button', user: @user %>
   </aside>
-    <%= render 'relationships/follow_button', user: @user %>
-
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
       <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">投稿 <span class="badge badge-secondary"><%= @count_guitars %></span></a></li>
