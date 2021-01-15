@@ -24,7 +24,7 @@ class GuitarsController < ApplicationController
      else
       @guitars = current_user.feed_guitars.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿に失敗しました。'
-      render 'toppages/index'
+      render :new
      end
     end
     

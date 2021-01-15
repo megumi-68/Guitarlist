@@ -21,6 +21,7 @@
   </div>
   
   <%= form_for @guitar do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
         <%= f.label :category, 'カテゴリー' %>
         <%= f.text_field :category, class: 'form-control' %>
