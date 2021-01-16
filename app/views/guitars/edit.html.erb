@@ -4,7 +4,7 @@
       <a class="btn btn-outline-info" href="/">投稿一覧</a>
   </div>
 </div>
-
+<div class="row">
 <%= form_for(@guitar) do |f| %>
    <% if @guitar.photo? %>
       <%= image_tag @guitar.photo.thumb.url %>
@@ -14,10 +14,13 @@
       <button type="button" class="btn btn-outline-secondary rounded-pill">
          <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %>
       </button>
+    <div>
 　　<%= f.submit '更新', class: 'btn btn-primary' %>
 <% end %>
+　　</div>
 
   <%= form_for @guitar do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
         <%= f.label :category, 'カテゴリー' %>
         <%= f.text_field :category, class: 'form-control' %>
@@ -34,13 +37,13 @@
     </div>
     <div class="form-group">
         <%= f.label :content, '投稿内容' %>
-        <%= f.text_area :content, class: 'form-control', rows:10 %>
+        <%= f.text_area :content, class: 'form-control', rows:5 %>
         <small id=content-tip" class="form-text text-muted">
             投稿内容を入力してください。 
         </small>
     </div>
-    <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+    <%= f.submit '編集完了', class: 'btn btn-info btn-block' %>
     <small id="submit-tip" class="form-text text-muted">
-        投稿する前に投稿内容を見直してください!
+        編集内容を見直してください
     </small>
 <% end %>
