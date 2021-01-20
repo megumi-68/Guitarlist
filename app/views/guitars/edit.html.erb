@@ -7,20 +7,14 @@
 <div class="row">
 <%= form_for(@guitar) do |f| %>
    <% if @guitar.photo? %>
-      <%= image_tag @guitar.photo.thumb.url %>
+      <%= image_tag @guitar.photo.thumb.url, :alt => 'ギター画像' %>
    <% else %>
-      <%= image_tag "/assets/default.g", :size => '100x100' %>
+      <%= image_tag "/assets/default.g", :alt => 'デフォルト画像', :size => '100x100' %>
    <% end %>
       <button type="button" class="btn btn-outline-secondary rounded-pill">
          <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %>
       </button>
-    <div>
-　　<%= f.submit '更新', class: 'btn btn-primary' %>
-<% end %>
-　　</div>
-
-  <%= form_for @guitar do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
+ <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
         <%= f.label :category, 'カテゴリー' %>
         <%= f.text_field :category, class: 'form-control' %>

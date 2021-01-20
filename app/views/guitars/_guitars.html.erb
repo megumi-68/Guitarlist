@@ -1,15 +1,24 @@
+
 <div class="row">
  <% guitars.each do |guitar| %>
   <div class="col-md-4">
    <div class="card">
    <div class="card-header">
-        <%= link_to guitar.user.name, user_path(guitar.user) %> <span class="text-muted"><%= guitar.created_at %></span>
+    
+    <% if guitar.user.image? %>
+      <%= image_tag guitar.user.image.thumb.url, :alt => 'ユーザー画像',:size => '50x50' %>
+    <% else %>
+       <%= image_tag "/assets/default.u", :alt => 'デフォルト画像',:size => '50x50' %>
+    <% end %>
+    <%= link_to guitar.user.name, user_path(guitar.user) %> 
+    
    </div>
+   
    <div class="card-body">
      <% if guitar.photo? %>
-       <%= link_to (image_tag "#{guitar.photo.thumb.url}"), guitar,id: "detail-" + guitar.id.to_s %>
+       <%= link_to (image_tag "#{guitar.photo.thumb.url}", :alt => 'ギター画像' ,:size => '200x200'), guitar,id: "detail-" + guitar.id.to_s %>
      <% else %>
-        <%= link_to (image_tag "/assets/default.g", :size => '100x100'), guitar,id: "detail-" + guitar.id.to_s %>
+        <%= link_to (image_tag "/assets/default.g", :alt => 'デフォルト画像',:size => '200x200'), guitar,id: "detail-" + guitar.id.to_s %>
      <% end %>
      <p class="card-text"><%=  guitar.name %></p>
      <%= render 'favorites/favorite_button', guitar: guitar %>
@@ -17,9 +26,9 @@
          <%= link_to "削除", guitar, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
      <% end %>
      </div>
+     <span class="text-muted"><%= guitar.created_at.strftime("%Y-%m-%d %H:%M") %></span>
    </div>
  </div>
  <% end %>
 </div>
-
 <%= paginate guitars %>

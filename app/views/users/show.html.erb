@@ -6,9 +6,9 @@
       </div>
       <div class="card-body">
          <% if @user.image? %>
-          <%= image_tag @user.image.thumb.url %>
+          <%= image_tag @user.image.thumb.url, :alt => 'ユーザー画像' %>
          <% else %>
-          <%= image_tag "/assets/default.u", :size => '100x100' %>
+          <%= image_tag "/assets/default.u", :alt => 'デフォルト画像',:size => '100x100' %>
          <% end %>
      
       <%= @user.profile%>

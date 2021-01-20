@@ -3,9 +3,9 @@
     <% users.each do |user| %>
       <li class="media">
       <% if user.image? %>
-       <%= image_tag user.image.thumb50.url %>
+       <%= image_tag user.image.thumb50.url, :alt => 'ユーザー画像' %>
       <% else %>
-       <%= image_tag "/assets/default.u", :size => '100x100' %>
+       <%= image_tag "/assets/default.u", :alt => 'デフォルト画像',:size => '100x100' %>
       <% end %>
        <div class="media-body">
         <div>

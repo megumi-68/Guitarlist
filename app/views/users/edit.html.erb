@@ -4,21 +4,17 @@
 
 <%= form_for(@user) do |f| %>
    <% if @user.image? %>
-      <%= image_tag @user.image.thumb.url %>
+      <%= image_tag @user.image.thumb.url, :alt => 'ユーザー画像' %>
    <% else %>
-      <%= image_tag "/assets/default.u", :size => '100x100' %>
+      <%= image_tag "/assets/default.u", :alt => 'デフォルト画像',:size => '100x100' %>
    <% end %>
       <button type="button" class="btn btn-outline-secondary rounded-pill">
          <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
       </button>
-　　<%= f.submit '更新', class: 'btn btn-primary' %>
-<% end %>
 
 
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
-
-    <%= form_with(model: @user, local: true) do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
       
       <div class="form-group">
