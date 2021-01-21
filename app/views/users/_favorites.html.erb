@@ -1,7 +1,6 @@
 <ul class="list-unstyled">
   <% likes.each do |like| %>
     <li class="media mb-3">
-      
       <div class="media-body">
         <div>
           <%= link_to guitar.user.name, user_path(guitar.user) %> <span class="text-muted">posted at <%= guitar.created_at %></span>

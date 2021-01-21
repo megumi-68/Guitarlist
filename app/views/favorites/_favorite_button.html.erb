@@ -1,11 +1,15 @@
 <% if current_user.like?(guitar) %>
     <%= form_with(model: current_user.favorites.find_by(guitar_id: guitar.id), local: true, method: :delete) do |f| %>
       <%= hidden_field_tag :guitar_id, guitar.id %>
-      <%= f.submit 'Unlike', class: 'btn btn-danger btn-block' %>
+      <%= button_tag :type => "submit", :class =>"btn btn-secondary btn-sm" do %>
+    <i class="fas fa-heart"></i>Unlike
+    <% end %>
     <% end %>
   <% else %>
     <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
       <%= hidden_field_tag :guitar_id, guitar.id %>
-      <%= f.submit 'Like', class: 'btn btn-primary btn-block' %>
+    <%= button_tag :type => "submit", :class =>"btn btn-primary btn-sm" do %>
+    <i class="far fa-heart"></i>Like
     <% end %>
+  <% end %>
   <% end %>

@@ -1,15 +1,14 @@
 <% if logged_in? %>
  <div class="row">
     <h1>Guitars</h1>
-    <div class="ml-auto posts_button">
-        <a class="btn btn-outline-info" href="/guitars/new" role="button">投稿</a>
-    </div>
  </div>
+<div class="container text-center">
+     　<a href="#" class="btn btn-info">新着投稿</a>
+       <a href="#" class="btn btn-secondary">人気</a>
+</div>
  <div class="row">
-    <div class="col-sm-8">
-      <%= render 'guitars/guitars', guitars: @guitars %>
-    </div>
-  </div>
+    <%= render 'guitars/guitars', guitars: @guitars %>
+ </div>
 <% else %>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -24,7 +23,7 @@
           <div class="carousel-caption text-left">
             <h1>自慢のギターをシェアしよう</h1>
             <p>自慢のギターを投稿しよう。それはどんなサウンド？</p>
-            <p><%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %></p>
+            <p><%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-info' %></p>
           </div>
         </div>
       </div>
@@ -34,7 +33,7 @@
           <div class="carousel-caption">
             <h1>好きなジャンルが合う人と繋がろう</h1>
             <p>好きな音楽ジャンルが似ている人は、どんなギターを持っているんだろう？</p>
-            <p><<%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %></p>
+            <p><<%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-info' %></p>
           </div>
         </div>
       </div>
@@ -44,7 +43,7 @@
           <div class="carousel-caption text-right">
             <h1>お気に入りの１本を探そう</h1>
             <p>次はどんな１本がいいだろう。一生付き合える相棒を探そう。</p>
-            <p><%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-primary' %></p>
+            <p><%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-info' %></p>
           </div>
         </div>
       </div>
@@ -58,25 +57,50 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  
   <div class="container marketing">
     <div class="row">
       <div class="col-lg-4">
-       <i class="far fa-file-image fa-5x "></i>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+       <i class="far fa-file-image fa-3x "></i>
+        <h2>写真を投稿</h2>
+        <p>自分の楽器の魅力を伝えよう</p>
+      </div>
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+        <i class="far fa-comment-dots fa-3x"></i>
+        <h2>投稿にコメント</h2>
+        <p>気軽にコメントしてユーザー同士で繋がろう</p>
+      </div>
       <div class="col-lg-4">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
+        <i class="fas fa-bookmark fa-3x"></i>
+        <h2>気になる楽器は保存</h2>
+        <p>お気に入り機能で気になる楽器は保存しておこう</p>
+      </div>
     </div><!-- /.row -->
+    </div>
+    
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <!-- <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2> -->
+        <h2 class="featurette-heading">楽器好きの為の<br>
+        <span class="text-muted">Guitar list</span></h2>
+        <p class="lead">楽器屋さんに行ってもたくさんありすぎて何が良いのか分からない。<br>
+        ちょっと良いギターが欲しいけど、選ぶの失敗したくない。<br>
+        そんなギタープレイヤー達の為のアプリケーションです。
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img class="featurette-image img-fluid mx-auto" src="/assets/topimage.jpg/" alt="Generic placeholder image">
+      </div>
+    </div>
+    
+     <hr class="featurette-divider">
+    
+    <footer class="container">
+    <!-- <p class="float-right"><a href="#">Back to top</a></p> -->
+    <p class="float-right"><a href="/">トップに戻る</a></p>
+    <!-- <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p> -->
+    <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">プライバシー</a> &middot; <a href="#">利用規約</a></p>
+  </footer>
 <% end %>
