@@ -24,7 +24,7 @@ class GuitarsController < ApplicationController
      else
       @guitars = current_user.feed_guitars.order(id: :desc).page(params[:page])
       flash.now[:danger] = '投稿に失敗しました。'
-      render new
+      render :new
      end
     end
     
@@ -43,7 +43,15 @@ class GuitarsController < ApplicationController
       @guitar = Guitar.find(params[:id])
       @guitar.destroy
       flash[:success] = '削除しました。'
-      redirect_back(fallback_location: root_path)
+      request.referer
+    end
+    
+    def search
+     if params[:name].present?
+      @guitars = Guitar.where('name LIKE ?', "%#{params[:name]}%")
+     else
+      @guitars = Guitar.none
+     end
     end
 
   private

@@ -13,25 +13,28 @@
        <%= image_tag "/assets/default.u", :alt => 'デフォルト画像',:size => '50x50' %>
       <% end %>
    <%= link_to @guitar.user.name, user_path(@guitar.user) %>
-    <% if current_user == @guitar.user %>
-        <%= link_to '編集', edit_guitar_path(@guitar),class:"btn" %>
-       <% end %>
   </div>
-   <div class="card-body">
+  
+  <div class="card-body">
         <% if @guitar.photo? %>
         <%= image_tag @guitar.photo.thumb.url, :alt => 'ユーザー画像' %>
         <% else %>
         <%= image_tag "/assets/default.g", :alt => 'デフォルト画像',:size => '100x100' %>
         <% end %>
-    </div>
-  <div class="card-body">
+  </div>
+   <div class="card-body">
        <h4 class="card-title"><%= @guitar.name %></h4>
-  </div>
-  <div class="card-body">
-      <p class="card-text"><%= @guitar.category %></p>
-  </div>
+   </div>
   <div class="card-body">
       <p class="card-text"><%= @guitar.content %></p>
+      <div class="option text-right">
+    <% if current_user == @guitar.user %>
+        <%= link_to '編集', edit_guitar_path(@guitar),class:"btn" %>
+      <% end %>
+    <% if current_user == @guitar.user %>
+        <%= link_to "削除", @guitar, method: :delete, data: { confirm: "You sure?" }, class: 'btn' %>
+     <% end %>
+      </div>
   </div>
  </div>
 </div>
@@ -42,14 +45,14 @@
       <div class="field">
        <%= f.text_area :comment, size: "30x2", placeholder: "コメントを入力" %>
       </div>
-      <%= f.submit "コメントする", class: "btn btn-primary" %>
+      <%= f.submit "コメントする", class: "btn btn-info" %>
     <% end %>
   </div>
  </div>
  <hr class="featurette-divider">
  <ul class="list-unstyled">
    <div class="media-body">
-    　 <h5>コメント一覧</h5>
+    <h5>コメント一覧</h5>
     <% @guitar.comments.each do |comment| %>
       <div>
       <%= link_to comment.user.name, comment.user %>

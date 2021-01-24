@@ -2,10 +2,7 @@
  <div class="row">
     <h1>Guitars</h1>
  </div>
-<div class="container text-center">
-     　<a href="#" class="btn btn-info">新着投稿</a>
-       <a href="#" class="btn btn-secondary">人気</a>
-</div>
+
  <div class="row">
     <%= render 'guitars/guitars', guitars: @guitars %>
  </div>
@@ -24,6 +21,7 @@
             <h1>自慢のギターをシェアしよう</h1>
             <p>自慢のギターを投稿しよう。それはどんなサウンド？</p>
             <p><%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-info' %></p>
+            <p><%= link_to 'ゲストユーザー', guest_path, method: :post, class: 'btn btn-lg btn-success' %></p>
           </div>
         </div>
       </div>
@@ -34,6 +32,7 @@
             <h1>好きなジャンルが合う人と繋がろう</h1>
             <p>好きな音楽ジャンルが似ている人は、どんなギターを持っているんだろう？</p>
             <p><<%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-info' %></p>
+            <p><%= link_to 'ゲストユーザー', guest_path, method: :post, class: 'btn btn-lg btn-success' %></p>
           </div>
         </div>
       </div>
@@ -44,6 +43,7 @@
             <h1>お気に入りの１本を探そう</h1>
             <p>次はどんな１本がいいだろう。一生付き合える相棒を探そう。</p>
             <p><%= link_to 'ユーザー登録', signup_path, class: 'btn btn-lg btn-info' %></p>
+            <p><%= link_to 'ゲストユーザー', guest_path, method: :post, class: 'btn btn-lg btn-success' %></p>
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  
+  <hr class="featurette-divider">
   <div class="container marketing">
     <div class="row">
       <div class="col-lg-4">
@@ -67,7 +67,7 @@
       </div>
       <div class="col-lg-4">
         <i class="far fa-comment-dots fa-3x"></i>
-        <h2>投稿にコメント</h2>
+        <h2>投稿にコメント</h2> 
         <p>気軽にコメントしてユーザー同士で繋がろう</p>
       </div>
       <div class="col-lg-4">
@@ -76,7 +76,7 @@
         <p>お気に入り機能で気になる楽器は保存しておこう</p>
       </div>
     </div><!-- /.row -->
-    </div>
+  </div>
     
     <hr class="featurette-divider">
 
@@ -84,11 +84,12 @@
       <div class="col-md-7">
         <!-- <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2> -->
         <h2 class="featurette-heading">楽器好きの為の<br>
-        <span class="text-muted">Guitar list</span></h2>
+        <span class="text-muted">Guitar List</span></h2>
         <p class="lead">楽器屋さんに行ってもたくさんありすぎて何が良いのか分からない。<br>
         ちょっと良いギターが欲しいけど、選ぶの失敗したくない。<br>
         そんなギタープレイヤー達の為のアプリケーションです。
         </p>
+        <p><%= link_to '無料登録', signup_path, class: 'btn btn-lg btn-info' %></p>
       </div>
       <div class="col-md-5">
         <img class="featurette-image img-fluid mx-auto" src="/assets/topimage.jpg/" alt="Generic placeholder image">

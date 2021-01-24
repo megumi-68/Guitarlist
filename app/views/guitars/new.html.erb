@@ -4,9 +4,8 @@
       <a class="btn btn-outline-info" href="/">投稿一覧</a>
   </div>
 </div>
-<div class="row">
-    
-<%= form_for (@guitar) do |f| %>
+
+    <%= form_for (@guitar) do |f| %>
    <% if @guitar.photo? %>
       <%= image_tag @guitar.photo.thumb.url, :alt => 'ギター画像' %>
    <% else %>
@@ -15,11 +14,14 @@
       <button type="button" class="btn btn-outline-secondary rounded-pill">
          <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %>
       </button>
-
+  
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
   <%= render 'layouts/error_messages', model: f.object %>
     <div class="form-group">
         <%= f.label :category, 'カテゴリー' %>
-        <%= f.text_field :category, class: 'form-control' %>
+        <%= f.select :category, [["STタイプ"], ["TLタイプ"],["LPタイプ"],["SGタイプ"],["JGタイプ"],
+        ["JMタイプ"],["MGタイプ"],["セミアコタイプ"],["アコギ"],["その他"]], include_blank: "選択して下さい" %>
         <small id="poster-tip" class="form-text text-muted">
             カテゴリーを選択
         </small>
@@ -39,5 +41,6 @@
         </small>
     </div>
     <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
-<% end %>
- 
+    <% end %>
+ 　</div>
+ </div>
