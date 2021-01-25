@@ -18,10 +18,12 @@
         <%= link_to (image_tag "/assets/default.g", :alt => 'デフォルト画像',:size => '200x200'), guitar,id: "detail-" + guitar.id.to_s %>
      <% end %>
      <p class="card-text"><%=  guitar.name %></p>
+      <div id="likes_buttons_<%= guitar.id %>">
      <%= render 'favorites/favorite_button', guitar: guitar %>
      </div>
      <span class="text-muted"><%= guitar.created_at.strftime("%Y-%m-%d %H:%M") %></span>
    </div>
+ </div>
  </div>
  <% end %>
 </div>
