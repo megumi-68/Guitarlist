@@ -18,11 +18,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do 
-   process resize_to_fill: [200, 200, "Center"] 
- end 
-version :thumb50 do 
-  process resize_to_fit: [100, 100] 
- end 
+  process resize_to_limit: [200, 200] 
+  end 
+  version :thumb50 do 
+  process resize_to_limit: [200,200] 
+  end 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
