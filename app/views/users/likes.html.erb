@@ -6,12 +6,12 @@
       </div>
       <div class="card-body">
          <% if @user.image? %>
-          <%= image_tag @user.image.thumb.url %>
+          <%= image_tag @user.image.thumb.url,:alt => 'ユーザー画像',:size => '100x100'%>
          <% else %>
           <%= image_tag "/assets/default.u", :size => '100x100' %>
          <% end %>
      
-      <%= @user.profile%>
+      <p class="card-text">　<%= @user.profile%></p>
       <% if @user.id == current_user.id %>
       <p><%= link_to 'Edit profile', edit_user_path(@user) %></p>
       <% end %>
