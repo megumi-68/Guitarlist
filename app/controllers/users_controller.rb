@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-     before_action :require_user_logged_in, only: [:edit, :update]
-     before_action :correct_user,   only: [:edit, :update]
+     before_action :require_user_logged_in, only: [:edit, :update, :destroy]
+     before_action :correct_user, only: [:edit, :update, :destroy]
      
   def index
     @users = User.order(id: :desc).page(params[:page]).per(20)
@@ -43,6 +43,13 @@ class UsersController < ApplicationController
    end 
   end
   
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    flash[:success] = 'ユーザーを削除しました。'
+    redirect_to :root
+  end
+  
   def followings
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page])
@@ -70,6 +77,8 @@ class UsersController < ApplicationController
   
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless @user == current_user
+    redirect_to(root_url) 
+  unless @user == current_user
   end
+ end
 end
