@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
      before_action :require_user_logged_in, only: [:edit, :update, :destroy]
      before_action :correct_user, only: [:edit, :update, :destroy]
+     before_action :set_message, only: [:show, :edit, :update, :followings, :followers, :likes]
+     
      
   def index
     @users = User.order(id: :desc).page(params[:page]).per(20)
   end
 
   def show
-    @user = User.find(params[:id])
+    #set_message
     @guitars = @user.guitars.order(id: :desc).page(params[:page])
     counts(@user)
   end
@@ -28,11 +30,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    #set_message
   end
 
   def update
-    @user = User.find(params[:id])
+    #set_message
  
    if @user.update(user_params)
     flash[:success] = 'ユーザー情報を編集しました。'
@@ -51,25 +53,29 @@ class UsersController < ApplicationController
   end
   
   def followings
-    @user = User.find(params[:id])
+    #set_message
     @followings = @user.followings.page(params[:page])
     counts(@user)
   end
   
   def followers
-    @user = User.find(params[:id])
+    #set_message
     @followers = @user.followers.page(params[:page])
     counts(@user)
   end
   
   def likes
-    @user = User.find(params[:id])
+    #set_message
     @likes = @user.likes.page(params[:page])
     @guitars = @user.guitars.order(id: :desc).page(params[:page])
     counts(@user)
   end
   
   private
+  
+  def set_message
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,:image,:profile)
@@ -79,4 +85,4 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     redirect_to(root_url) unless @user == current_user
   end
- end
+end
