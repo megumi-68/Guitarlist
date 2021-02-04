@@ -15,7 +15,6 @@ class GuitarsController < ApplicationController
       @comment = Comment.new
     end
     
-   
     def create
       @guitar = current_user.guitars.build(guitar_params)
      if @guitar.save
@@ -35,7 +34,6 @@ class GuitarsController < ApplicationController
     def update
       guitar = Guitar.find(params[:id])
       guitar.update(guitar_params)
-
       redirect_to guitar
     end
 
