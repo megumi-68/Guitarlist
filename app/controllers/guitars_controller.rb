@@ -48,7 +48,7 @@ class GuitarsController < ApplicationController
      if params[:name].present?
       @guitars = Guitar.where('name LIKE ?', "%#{params[:name]}%")
      else
-      @guitars = Guitar.none
+      @guitars = Guitar.all
      end
     end
 
