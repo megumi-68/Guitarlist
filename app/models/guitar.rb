@@ -6,6 +6,7 @@ class Guitar < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  
   validates :content, presence: true, length: { maximum: 255 }
   validates :category, presence: true, length: { maximum: 255 }
   validates :name, presence: true, length: { maximum: 255 }
